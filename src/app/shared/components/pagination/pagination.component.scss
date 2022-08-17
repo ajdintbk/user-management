@@ -1,0 +1,26 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.page-number {
+    cursor: pointer;
+    padding: 16px;
+    border: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+        height: 44px;
+    .active { 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: .3s;
+        padding: 16px;
+        background-color: #5BB7D6;
+        border-radius: 50%;
+        color: white;
+    }
+}

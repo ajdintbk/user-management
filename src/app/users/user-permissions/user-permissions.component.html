@@ -1,0 +1,11 @@
+<ng-container *ngIf="user && permissions">
+  <div class="wrapper">
+    <h4>Permissions for user {{ user.firstName }}</h4>
+    <div *ngFor="let item of permissions">
+      <input [checked]="item.checked" (change)="togglePermission($event, item)" type="checkbox" />
+      <mat-label>{{ item.presentationName }}</mat-label>
+    </div>
+    <button (click)="submit()">Save</button>
+  </div>
+</ng-container>
+

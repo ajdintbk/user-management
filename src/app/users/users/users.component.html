@@ -1,0 +1,54 @@
+<div class="title">
+  <div class="left-side">
+    <h1>Users</h1>
+    <form [formGroup]="filterForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Order by</mat-label>
+        <mat-select
+          (selectionChange)="handleOrderChange($event)"
+          formControlName="orderBy"
+        >
+          <mat-option *ngFor="let filter of filters" [value]="filter.value">{{
+            filter.presentationName
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-form-field" appearance="outline">
+        <mat-label>Search...</mat-label>
+        <input #search matInput type="text" formControlName="search" />
+      </mat-form-field>
+    </form>
+    <button [routerLink]="['add']">Add user</button>
+
+  </div>
+</div>
+<div class="wrapper">
+  <div class="user-card" *ngFor="let item of users$ | async">
+    <div class="header">
+      <div class="icon">
+        <span class="material-icons">person</span>
+      </div>
+    </div>
+    <div class="body">
+      <h3>{{ item.firstName }} {{ item.lastName }}</h3>
+      <p>{{ item.username }} | {{ item.email }}</p>
+      <h4>
+        {{ item.status ? "Active" : "Not active" }}
+      </h4>
+    </div>
+    <div class="buttons">
+      <button class="primary" [routerLink]="['/users', item.id]">Edit</button>
+      <button class="primary" [routerLink]="['permissions', item.id]">
+        Assign
+      </button>
+      <button class="danger" (click)="handleDelete(item)">Delete</button>
+    </div>
+  </div>
+</div>
+<div style="display: flex; justify-content: center; width: 100%">
+  <app-pagination
+    [count]="totalCount$ | async"
+    (onPageNumber)="handleFilters($event)"
+  ></app-pagination>
+</div>

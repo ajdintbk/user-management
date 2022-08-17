@@ -1,0 +1,16 @@
+button { 
+    border: 0px;
+    font-size: 18px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    &:first-child{ 
+        background-color: rgb(197, 22, 22);
+        color: white;
+    }
+}
+
+.button-group {
+    display: flex;
+    gap: 16px;
+}

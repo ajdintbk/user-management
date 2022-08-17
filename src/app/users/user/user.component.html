@@ -1,0 +1,36 @@
+<mat-spinner *ngIf="(loading$ | async) === true" [diameter]="50"></mat-spinner>
+
+<div class="wrapper" *ngIf="(loading$ | async) === false">
+  <h2>Edit user</h2>
+  <form [formGroup]="userForm">
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input matInput placeholder="First Name" formControlName="firstName" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="Last Name" formControlName="lastName" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email" formControlName="email" />
+    </mat-form-field>
+    <div>
+      <input formControlName="status" type="checkbox" />
+      <mat-label>Active</mat-label>
+    </div>
+
+    <div class="button-group">
+      <button
+      type="button"
+      [disabled]="!userForm.touched && !userForm.dirty"
+      (click)="onSubmit()"
+      >
+      Save
+    </button>
+    <button type="button" class="secondary" (click)="discard()">Discard</button>
+  </div>
+  </form>
+</div>

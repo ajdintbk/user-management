@@ -1,0 +1,9 @@
+<div class="wrapper">
+  <div
+    class="page-number"
+    (click)="handlePageNumber(i)"
+    *ngFor="let item of [].constructor(pagesCount); let i = &quot;index+1&quot;"
+  >
+    <span [ngClass]="{active: page === i}">{{ i }}</span>
+  </div>
+</div>
